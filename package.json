@@ -1,8 +1,8 @@
 {
   "name": "g3",
-  "version": "0.2.28",
+  "version": "0.2.30",
   "description": "Web Application Generator",
-  "author": "Get3W <corp@get3w.com>",
+  "author": "Firm100 <corp@firm100.com>",
   "bin": {
     "g3": "./src/index.js"
   },
@@ -16,9 +16,9 @@
     "fix-build": "node ./src/index.js build ./fix/en"
   },
   "bugs": {
-    "url": "https://github.com/get3w/g3/issues"
+    "url": "https://github.com/firm100/g3/issues"
   },
-  "homepage": "https://github.com/get3w/g3",
+  "homepage": "https://github.com/firm100/g3",
   "keywords": [
     "web application",
     "generator",
@@ -27,7 +27,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/get3w/g3.git"
+    "url": "git+https://github.com/firm100/g3.git"
   },
   "engines": {
     "node": ">0.12.0"
