@@ -1,0 +1,50 @@
+{
+  "name": "g3",
+  "version": "0.2.28",
+  "description": "Web Application Generator",
+  "author": "Get3W <corp@get3w.com>",
+  "bin": {
+    "g3": "./src/index.js"
+  },
+  "scripts": {
+    "g3": "node ./src/index.js",
+    "test": "node_modules/.bin/mocha src/**/*.spec.js",
+    "test-lint": "eslint --ext .js,.jsx --ignore-path .gitignore .",
+    "test-integration": "node_modules/.bin/mocha ./src/test/integration",
+    "test-all": "npm run test-lint && npm test && npm run test-integration",
+    "test-coverage": "node_modules/.bin/nyc --reporter=lcov --reporter=text npm test",
+    "fix-build": "node ./src/index.js build ./fix/en"
+  },
+  "bugs": {
+    "url": "https://github.com/get3w/g3/issues"
+  },
+  "homepage": "https://github.com/get3w/g3",
+  "keywords": [
+    "web application",
+    "generator",
+    "reactjs"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/get3w/g3.git"
+  },
+  "engines": {
+    "node": ">0.12.0"
+  },
+  "dependencies": {
+    "async": "^1.5.2",
+    "bluebird": "^3.3.5",
+    "chokidar": "^1.4.3",
+    "commander": "^2.9.0",
+    "fs-extra": "^0.26.7",
+    "js-base64": "^2.1.9",
+    "js-yaml": "^3.5.5",
+    "lodash": "^4.15.0",
+    "node-fetch": "^1.6.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5"
+  }
+}

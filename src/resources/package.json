@@ -1,0 +1,28 @@
+{
+    "dependencies": {
+        "react": "*",
+        "react-dom": "*",
+        "redux": "*",
+        "react-redux": "*",
+        "react-router": "*",
+        "parse": "*",
+        "parse-dashboard": "*",
+        "parse-server": "*"
+    },
+    "devDependencies": {
+        "babel": "*",
+        "babel-core": "*",
+        "babel-loader": "*",
+        "babel-preset-es2015": "*",
+        "babel-preset-react": "*",
+        "babel-preset-stage-0": "*",
+        "style-loader": "*",
+        "css-loader": "*",
+        "file-loader": "*",
+        "webpack": "*",
+        "webpack-dev-server": "*",
+        "html-webpack-plugin": "*",
+        "react-hot-loader": "*",
+        "express": "*"
+    }
+}
