@@ -78,6 +78,7 @@
     "typings/mocha/mocha.d.ts",
     "typings/node-uuid/node-uuid.d.ts",
     "typings/node/node.d.ts",
+    "typings/slash/slash.d.ts",
     "typings/source-map/source-map.d.ts"
   ],
   "exclude": [

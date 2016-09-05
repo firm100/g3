@@ -1,9 +1,18 @@
 import * as path from 'path'
 import * as _ from 'lodash'
 import * as fse from 'fs-extra'
+import * as slash from 'slash'
 
 import * as models from '../../models'
 import * as lib from '../'
+
+export function osPath(p: string): string {
+  p = slash(p || '')
+  if (process && process.platform === 'win32') {
+    p = p.replace(/\//g,'\\\\')
+  }
+  return p
+}
 
 export function pathRelative(from: string, to: string): string {
   return '/' + _.trim(path.relative(from, to).toLowerCase().replace(/\\/g,'/'), '/')

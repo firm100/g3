@@ -2,6 +2,15 @@
 var path = require('path');
 var _ = require('lodash');
 var fse = require('fs-extra');
+var slash = require('slash');
+function osPath(p) {
+    p = slash(p || '');
+    if (process && process.platform === 'win32') {
+        p = p.replace(/\//g, '\\\\');
+    }
+    return p;
+}
+exports.osPath = osPath;
 function pathRelative(from, to) {
     return '/' + _.trim(path.relative(from, to).toLowerCase().replace(/\\/g, '/'), '/');
 }

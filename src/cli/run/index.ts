@@ -24,7 +24,7 @@ export function run(appPath) {
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var htmlPath = '${path.resolve(g3Config._appPath, "./index.html")}';
+var htmlPath = '${lib.osPath(path.resolve(g3Config._appPath, "./index.html"))}';
 module.exports = {
   entry: [
     'webpack-dev-server/client?http://0.0.0.0:${port}',
@@ -40,7 +40,7 @@ module.exports = {
     extensions: ["", ".webpack.js", ".web.js", ".jsx", ".js"]
   },
   resolveLoader: {
-    root: '${path.resolve(g3Config._appPath, "node_modules")}'
+    root: '${lib.osPath(path.resolve(g3Config._appPath, "node_modules"))}'
   },
   module: {
     loaders: [

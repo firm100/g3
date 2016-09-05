@@ -45,11 +45,11 @@ export function buildClient(g3Config: models.G3Config) {
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var htmlPath = '${path.resolve(g3Config._appPath, "./index.html")}';
+var htmlPath = '${lib.osPath(path.resolve(g3Config._appPath, "./index.html"))}';
 module.exports = {
     entry: './${rel}',
     output: {
-      path: '${path.resolve(g3Config._clientPath, g3Config.build.path)}',
+      path: '${lib.osPath(path.resolve(g3Config._clientPath, g3Config.build.path))}',
       publicPath: '${g3Config.build.publicPath}',
       filename: '[name].[chunkhash:8].js',
       chunkFilename: '[name].[chunkhash:8].chunk.js',
@@ -58,7 +58,7 @@ module.exports = {
       extensions: ["", ".webpack.js", ".web.js", ".jsx", ".js"]
     },
     resolveLoader: {
-      root: '${path.resolve(g3Config._appPath, "node_modules")}'
+      root: '${lib.osPath(path.resolve(g3Config._appPath, "node_modules"))}'
     },
     module: {
       loaders: [
