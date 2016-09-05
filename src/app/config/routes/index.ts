@@ -3,6 +3,15 @@ import * as _ from 'lodash'
 import * as models from '../../../models'
 import * as lib from '../../../lib'
 
+function getLayouts(g3Config: models.G3Config, sourceDir: models.SourceDir, dirPath: string, layouts: Array<string>) {
+  if (sourceDir && sourceDir.routes.layout) {
+    const layoutPath = path.join(sourceDir.path, sourceDir.routes.layout)
+    const rel = lib.forwardSlash(path.relative(dirPath, layoutPath))
+    layouts.splice(0, 0, rel)
+    getLayouts(g3Config, sourceDir.parent, dirPath, layouts)
+  }
+}
+
 export function getRoutesJS(g3Config: models.G3Config, sourceDir: models.SourceDir): string {
   const dirPath = path.join(g3Config._g3Path, sourceDir.key)
 
@@ -20,11 +29,11 @@ export function getRoutesJS(g3Config: models.G3Config, sourceDir: models.SourceD
     const layoutPath = path.join(sourceDir.path, sourceDir.routes.layout)
     const rel = lib.forwardSlash(path.relative(dirPath, layoutPath))
     routesJS += `,
-  getComponent(nextState, cb) {
-    require.ensure([], (require) => {
-      cb(null, require('${rel}').default);
-    });
-  }`
+getComponent(nextState, cb) {
+  require.ensure([], (require) => {
+    cb(null, require('${rel}').default);
+  });
+}`
   }
 
   if (sourceDir.routes.redirect) {
@@ -94,7 +103,7 @@ export function getRoutesJS(g3Config: models.G3Config, sourceDir: models.SourceD
       cb(null, [${children.map((child: string) => {
         return `
         require('./${child}/routes').default`
-        }).join(',')}
+      }).join(',')}
       ]);
     });
   }`

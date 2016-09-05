@@ -3,6 +3,14 @@ var path = require('path');
 var _ = require('lodash');
 var models = require('../../../models');
 var lib = require('../../../lib');
+function getLayouts(g3Config, sourceDir, dirPath, layouts) {
+    if (sourceDir && sourceDir.routes.layout) {
+        var layoutPath = path.join(sourceDir.path, sourceDir.routes.layout);
+        var rel = lib.forwardSlash(path.relative(dirPath, layoutPath));
+        layouts.splice(0, 0, rel);
+        getLayouts(g3Config, sourceDir.parent, dirPath, layouts);
+    }
+}
 function getRoutesJS(g3Config, sourceDir) {
     var dirPath = path.join(g3Config._g3Path, sourceDir.key);
     var routesJS = '';
@@ -16,7 +24,7 @@ function getRoutesJS(g3Config, sourceDir) {
     if (sourceDir.routes.layout) {
         var layoutPath = path.join(sourceDir.path, sourceDir.routes.layout);
         var rel = lib.forwardSlash(path.relative(dirPath, layoutPath));
-        routesJS += ",\n  getComponent(nextState, cb) {\n    require.ensure([], (require) => {\n      cb(null, require('" + rel + "').default);\n    });\n  }";
+        routesJS += ",\ngetComponent(nextState, cb) {\n  require.ensure([], (require) => {\n    cb(null, require('" + rel + "').default);\n  });\n}";
     }
     if (sourceDir.routes.redirect) {
         var redirect = sourceDir.routes.redirect;
