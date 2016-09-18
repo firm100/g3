@@ -113,7 +113,15 @@ module.exports = {
   const html = lib.readFileSync(path.resolve(g3Config._clientPath, g3Config.build.path, "./index.html"))
 
   _.mapKeys(sourceDirMap, function(sourceDir: models.SourceDir, key: string) {
+    let routeHTML = html
+
     const routePath = app.getRoutePath(sourceDir)
-    lib.writeHTML(g3Config, routePath, html)
+    const rootPath = path.resolve(g3Config._sourcePath, sourceDir.path, "./root.html")
+    if (lib.isFile(rootPath)) {
+      const rootHTML = lib.readFileSync(rootPath)
+      routeHTML = routeHTML.replace('<div id="root"></div>', '<div id="root">' + rootHTML + '</div>')
+    }
+
+    lib.writeHTML(g3Config, routePath, routeHTML)
   });
 }

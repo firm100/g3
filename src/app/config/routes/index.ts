@@ -16,24 +16,23 @@ export function getRoutesJS(g3Config: models.G3Config, sourceDir: models.SourceD
   const dirPath = path.join(g3Config._g3Path, sourceDir.key)
 
   let routesJS = ''
-  routesJS += 'export default {'
+
   if (sourceDir.routes.path) {
     routesJS += `
-  path: '${sourceDir.routes.path}'`
-  } else {
-    routesJS += `
-  component: 'div'`
+  path: '${sourceDir.routes.path}',
+  `
   }
 
   if (sourceDir.routes.layout) {
     const layoutPath = path.join(sourceDir.path, sourceDir.routes.layout)
     const rel = lib.forwardSlash(path.relative(dirPath, layoutPath))
-    routesJS += `,
-getComponent(nextState, cb) {
-  require.ensure([], (require) => {
-    cb(null, require('${rel}').default);
-  });
-}`
+    routesJS += `
+  getComponent(nextState, cb) {
+    require.ensure([], (require) => {
+      cb(null, require('${rel}').default);
+    });
+  },
+  `
   }
 
   if (sourceDir.routes.redirect) {
@@ -41,10 +40,11 @@ getComponent(nextState, cb) {
     if (redirect[0] !== '/') {
       redirect = lib.urlJoin(getRoutePath(sourceDir), redirect)
     }
-    routesJS += `,
+    routesJS += `
   indexRoute: {
     onEnter: (nextState, replace) => replace('${redirect}')
-  }`
+  },
+  `
   } else {
     let rel = ''
     if (!sourceDir.routes.index) {
@@ -58,7 +58,7 @@ getComponent(nextState, cb) {
     }
 
     if (rel) {
-      routesJS += `,
+      routesJS += `
   getIndexRoute(location, cb) {
     cb(null, {
       getComponent(nextState, cb) {
@@ -67,7 +67,8 @@ getComponent(nextState, cb) {
         });
       }
     });
-  }`
+  },
+  `
     }
   }
 
@@ -97,7 +98,7 @@ getComponent(nextState, cb) {
     })
   }
   if (children.length > 0) {
-    routesJS += `,
+    routesJS += `
   getChildRoutes(location, cb) {
     require.ensure([], (require) => {
       cb(null, [${children.map((child: string) => {
@@ -106,12 +107,13 @@ getComponent(nextState, cb) {
       }).join(',')}
       ]);
     });
-  }`
+  },
+  `
   }
-  routesJS += `
-}`
 
-  return routesJS
+  return `export default {
+${routesJS}
+}`
 }
 
 export function getRoutePath(sourceDir: models.SourceDir): string {

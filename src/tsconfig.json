@@ -33,6 +33,7 @@
     "app/config/parseServer/index.ts",
     "app/config/routes/index.ts",
     "app/config/sourceDir/index.ts",
+    "app/config/store/index.ts",
     "app/index.ts",
     "app/parse/index.ts",
     "app/parse/parseSourceFiles.ts",

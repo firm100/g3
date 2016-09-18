@@ -32,7 +32,7 @@ module.exports = {
     "./${rel}"
   ],
   output: {
-    path: '${g3Config._appPath}',
+    path: '${lib.osPath(g3Config._appPath)}',
     publicPath: "/",
     filename: "bundle.js"
   },
@@ -60,7 +60,7 @@ module.exports = {
     ]
   },
   devServer: {
-    contentBase: '${g3Config._appPath}',
+    contentBase: '${lib.osPath(g3Config._appPath)}',
     port: ${port},
     noInfo: ${g3Config.run.noInfo},
     stats: { colors: true },

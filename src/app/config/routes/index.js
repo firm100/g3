@@ -14,24 +14,20 @@ function getLayouts(g3Config, sourceDir, dirPath, layouts) {
 function getRoutesJS(g3Config, sourceDir) {
     var dirPath = path.join(g3Config._g3Path, sourceDir.key);
     var routesJS = '';
-    routesJS += 'export default {';
     if (sourceDir.routes.path) {
-        routesJS += "\n  path: '" + sourceDir.routes.path + "'";
-    }
-    else {
-        routesJS += "\n  component: 'div'";
+        routesJS += "\n  path: '" + sourceDir.routes.path + "',\n  ";
     }
     if (sourceDir.routes.layout) {
         var layoutPath = path.join(sourceDir.path, sourceDir.routes.layout);
         var rel = lib.forwardSlash(path.relative(dirPath, layoutPath));
-        routesJS += ",\ngetComponent(nextState, cb) {\n  require.ensure([], (require) => {\n    cb(null, require('" + rel + "').default);\n  });\n}";
+        routesJS += "\n  getComponent(nextState, cb) {\n    require.ensure([], (require) => {\n      cb(null, require('" + rel + "').default);\n    });\n  },\n  ";
     }
     if (sourceDir.routes.redirect) {
         var redirect = sourceDir.routes.redirect;
         if (redirect[0] !== '/') {
             redirect = lib.urlJoin(getRoutePath(sourceDir), redirect);
         }
-        routesJS += ",\n  indexRoute: {\n    onEnter: (nextState, replace) => replace('" + redirect + "')\n  }";
+        routesJS += "\n  indexRoute: {\n    onEnter: (nextState, replace) => replace('" + redirect + "')\n  },\n  ";
     }
     else {
         var rel = '';
@@ -46,7 +42,7 @@ function getRoutesJS(g3Config, sourceDir) {
             rel = lib.forwardSlash(path.relative(dirPath, indexPath));
         }
         if (rel) {
-            routesJS += ",\n  getIndexRoute(location, cb) {\n    cb(null, {\n      getComponent(nextState, cb) {\n        require.ensure([], (require) => {\n          cb(null, require('" + rel + "').default);\n        });\n      }\n    });\n  }";
+            routesJS += "\n  getIndexRoute(location, cb) {\n    cb(null, {\n      getComponent(nextState, cb) {\n        require.ensure([], (require) => {\n          cb(null, require('" + rel + "').default);\n        });\n      }\n    });\n  },\n  ";
         }
     }
     var children = [];
@@ -76,12 +72,11 @@ function getRoutesJS(g3Config, sourceDir) {
         });
     }
     if (children.length > 0) {
-        routesJS += ",\n  getChildRoutes(location, cb) {\n    require.ensure([], (require) => {\n      cb(null, [" + children.map(function (child) {
+        routesJS += "\n  getChildRoutes(location, cb) {\n    require.ensure([], (require) => {\n      cb(null, [" + children.map(function (child) {
             return "\n        require('./" + child + "/routes').default";
-        }).join(',') + "\n      ]);\n    });\n  }";
+        }).join(',') + "\n      ]);\n    });\n  },\n  ";
     }
-    routesJS += "\n}";
-    return routesJS;
+    return "export default {\n" + routesJS + "\n}";
 }
 exports.getRoutesJS = getRoutesJS;
 function getRoutePath(sourceDir) {

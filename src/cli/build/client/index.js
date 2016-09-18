@@ -23,8 +23,14 @@ function buildClient(g3Config) {
     });
     var html = lib.readFileSync(path.resolve(g3Config._clientPath, g3Config.build.path, "./index.html"));
     _.mapKeys(sourceDirMap, function (sourceDir, key) {
+        var routeHTML = html;
         var routePath = app.getRoutePath(sourceDir);
-        lib.writeHTML(g3Config, routePath, html);
+        var rootPath = path.resolve(g3Config._sourcePath, sourceDir.path, "./root.html");
+        if (lib.isFile(rootPath)) {
+            var rootHTML = lib.readFileSync(rootPath);
+            routeHTML = routeHTML.replace('<div id="root"></div>', '<div id="root">' + rootHTML + '</div>');
+        }
+        lib.writeHTML(g3Config, routePath, routeHTML);
     });
 }
 exports.buildClient = buildClient;

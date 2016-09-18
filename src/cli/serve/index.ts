@@ -17,7 +17,7 @@ export function serve(appPath) {
 var express = require('express');
 
 var app = express();
-app.use(express.static('${g3Config._clientPath}'));
+app.use(express.static('${lib.osPath(g3Config._clientPath)}'));
 
 app.listen(${port}, function() {
   console.log('G3 Production server running at localhost:' + ${port});

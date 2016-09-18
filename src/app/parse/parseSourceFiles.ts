@@ -10,13 +10,10 @@ export function parseSourceFiles(g3Config: models.G3Config): models.SourceDirMap
   let sourceDirMap: models.SourceDirMap = {}
   if (!lib.isDirectory(g3Config._sourcePath)) return sourceDirMap
 
-  if (lib.isDirectory(g3Config._g3Path)) {
-    lib.removeSync(g3Config._g3Path)
-  }
-  //lib.copySync(g3Config._sourcePath, g3Config._g3Path)
-
-  if (!lib.isFile(path.join(g3Config._g3Path, models.Const.FILE_APP) + '.jsx')) {
-    lib.writeSync(path.join(g3Config._g3Path, models.Const.FILE_APP + '.jsx'), application.getAppJS(g3Config))
+  lib.writeSync(path.join(g3Config._g3Path, models.Const.FILE_APP + '.jsx'), application.getAppJS(g3Config))
+  
+  if (!g3Config.redux.store && lib.isDirectory(path.join(g3Config._sourcePath, models.Const.DIR_LIB_REDUCERS))) {
+    lib.writeSync(path.join(g3Config._g3Path, models.Const.FILE_STORE + '.js'), application.getStoreJS(g3Config))
   }
 
   application.addSourceDir(g3Config, g3Config._sourcePath, null, false, sourceDirMap)

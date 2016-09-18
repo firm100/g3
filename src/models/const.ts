@@ -3,6 +3,7 @@ export class Const {
   static DIR_COMPONENTS = 'components'
   static DIR_CONTAINERS = 'containers'
   static DIR_LIB = 'lib'
+  static DIR_LIB_REDUCERS = 'lib/reducers'
   static DIR_STYLES = 'styles'
   static DIR_IMAGES = 'images'
 
@@ -11,6 +12,7 @@ export class Const {
   static FILE_ROUTES_JS = 'routes.js'
 
   static FILE_APP = 'app'
+  static FILE_STORE = 'store'
   static FILE_INDEX = 'index'
   static FILE_LAYOUT = 'layout'
 

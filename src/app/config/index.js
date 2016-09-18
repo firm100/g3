@@ -7,4 +7,5 @@ __export(require('./g3Config/'));
 __export(require('./parseServer/'));
 __export(require('./routes/'));
 __export(require('./sourceDir/'));
+__export(require('./store/'));
 //# sourceMappingURL=index.js.map
