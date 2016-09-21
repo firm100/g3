@@ -5,6 +5,8 @@ var home = require('../../home');
 var api = require('../../api');
 function status(appPath) {
     var g3Config = app.getG3Config(appPath, models.Const.COMMAND_STATUS);
+    if (!g3Config)
+        return console.error('fatal: Not found G3 config file: g3.yml');
     var homeConfig = home.getConfig();
     var authConfig = homeConfig.authConfig;
     if (!authConfig.username || !authConfig.accessToken) {

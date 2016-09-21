@@ -9,6 +9,7 @@ import {buildServer} from './server'
 
 export function build(appPath) {
   const g3Config: models.G3Config = app.getG3Config(appPath, models.Const.COMMAND_BUILD)
+  if (!g3Config) return console.error('fatal: Not found G3 config file: g3.yml')
 
   console.log('copying files...')
   lib.removeSync(g3Config._g3Path)

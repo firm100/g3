@@ -1,6 +1,6 @@
 {
   "name": "g3",
-  "version": "0.2.32",
+  "version": "0.2.34",
   "description": "Web Application Generator",
   "author": "Firm100 <corp@firm100.com>",
   "bin": {

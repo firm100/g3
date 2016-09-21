@@ -5,6 +5,7 @@ import * as app from '../../app'
 
 export function parse(appPath) {
   const g3Config: models.G3Config = app.getG3Config(appPath, models.Const.COMMAND_PARSE)
+  if (!g3Config) return console.error('fatal: Not found G3 config file: g3.yml')
 
   const serverJs = app.getParseServerJs(g3Config)
   lib.writeSync(path.join(g3Config._g3Path, 'cli', 'parse', 'server.js'), serverJs)

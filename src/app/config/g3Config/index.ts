@@ -5,13 +5,15 @@ import * as lib from '../../../lib'
 function readG3Config(appPath: string): models.G3Config {
   const g3ConfigPath = path.join(appPath, models.Const.FILE_G3_YML)
   const g3Config: models.G3Config = <models.G3Config>lib.readYML(g3ConfigPath)
-  return g3Config || new models.G3Config()
+  return g3Config
 }
 
 export function getG3Config(appPath: string, command: string): models.G3Config {
   appPath = path.resolve(appPath)
 
   let g3Config: models.G3Config = readG3Config(appPath)
+  if (!g3Config) return null
+
   g3Config._name = path.basename(appPath)
   g3Config._appPath = appPath
   g3Config._g3Path = path.join(appPath, models.Const.DIR_DOT_G3)

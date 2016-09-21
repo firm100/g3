@@ -8,6 +8,8 @@ import * as api from '../../api'
 
 export function status(appPath) {
   const g3Config: models.G3Config = app.getG3Config(appPath, models.Const.COMMAND_STATUS)
+  if (!g3Config) return console.error('fatal: Not found G3 config file: g3.yml')
+  
   const homeConfig: models.HomeConfig = home.getConfig()
   const authConfig = homeConfig.authConfig
 

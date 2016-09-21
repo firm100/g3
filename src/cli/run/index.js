@@ -6,6 +6,8 @@ var app = require('../../app');
 var serve_1 = require('../serve');
 function run(appPath) {
     var g3Config = app.getG3Config(appPath, models.Const.COMMAND_RUN);
+    if (!g3Config)
+        return console.error('fatal: Not found G3 config file: g3.yml');
     if (!lib.pathExists(g3Config._sourcePath))
         return serve_1.serve(appPath);
     var sourceDirMap = app.parse(g3Config);

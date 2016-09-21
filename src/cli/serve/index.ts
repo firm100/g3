@@ -7,6 +7,8 @@ import { build } from '../build'
 
 export function serve(appPath) {
   const g3Config: models.G3Config = app.getG3Config(appPath, models.Const.COMMAND_SERVE)
+  if (!g3Config) return console.error('fatal: Not found G3 config file: g3.yml')
+  
   if (!lib.isDirectory(g3Config._clientPath)) {
     build(appPath)
   }

@@ -5,11 +5,13 @@ var lib = require('../../../lib');
 function readG3Config(appPath) {
     var g3ConfigPath = path.join(appPath, models.Const.FILE_G3_YML);
     var g3Config = lib.readYML(g3ConfigPath);
-    return g3Config || new models.G3Config();
+    return g3Config;
 }
 function getG3Config(appPath, command) {
     appPath = path.resolve(appPath);
     var g3Config = readG3Config(appPath);
+    if (!g3Config)
+        return null;
     g3Config._name = path.basename(appPath);
     g3Config._appPath = appPath;
     g3Config._g3Path = path.join(appPath, models.Const.DIR_DOT_G3);

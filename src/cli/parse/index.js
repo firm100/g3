@@ -5,6 +5,8 @@ var lib = require('../../lib');
 var app = require('../../app');
 function parse(appPath) {
     var g3Config = app.getG3Config(appPath, models.Const.COMMAND_PARSE);
+    if (!g3Config)
+        return console.error('fatal: Not found G3 config file: g3.yml');
     var serverJs = app.getParseServerJs(g3Config);
     lib.writeSync(path.join(g3Config._g3Path, 'cli', 'parse', 'server.js'), serverJs);
     var spawn = require('child_process').spawn;

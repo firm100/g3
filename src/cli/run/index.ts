@@ -7,6 +7,8 @@ import { serve } from '../serve'
 
 export function run(appPath) {
   const g3Config: models.G3Config = app.getG3Config(appPath, models.Const.COMMAND_RUN)
+  if (!g3Config) return console.error('fatal: Not found G3 config file: g3.yml')
+
   if (!lib.pathExists(g3Config._sourcePath)) return serve(appPath)
 
   const sourceDirMap: models.SourceDirMap = app.parse(g3Config)
