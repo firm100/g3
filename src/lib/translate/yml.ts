@@ -40,11 +40,11 @@ export function readDirRoutes(sourceDir: models.SourceDir) {
         sourceDir.routes.path = '/'
       }
     } else {
-      let basename = path.basename(sourceDir.path).toLowerCase()
+      let basename = path.basename(sourceDir.path)
       if (basename === '__') {
         basename = '/'
       } else if (_.startsWith(basename, '__')) {
-        basename = basename.replace('__', ':')
+        basename = _.trim(basename.replace(/__/g, '/:'), '/')
       }
       sourceDir.routes.path = basename
     }

@@ -41,12 +41,12 @@ function readDirRoutes(sourceDir) {
             }
         }
         else {
-            var basename = path.basename(sourceDir.path).toLowerCase();
+            var basename = path.basename(sourceDir.path);
             if (basename === '__') {
                 basename = '/';
             }
             else if (_.startsWith(basename, '__')) {
-                basename = basename.replace('__', ':');
+                basename = _.trim(basename.replace(/__/g, '/:'), '/');
             }
             sourceDir.routes.path = basename;
         }
