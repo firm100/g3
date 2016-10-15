@@ -1,7 +1,7 @@
 "use strict";
-var path = require('path');
-var chai = require('chai');
-var lib = require('../');
+var path = require("path");
+var chai = require("chai");
+var lib = require("../");
 var expect = chai.expect;
 describe('lib.location', function () {
     it('readdirSync', function (done) {

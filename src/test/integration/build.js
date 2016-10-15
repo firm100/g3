@@ -1,7 +1,7 @@
 "use strict";
-var path = require('path');
-var chai = require('chai');
-var _1 = require('../');
+var path = require("path");
+var chai = require("chai");
+var _1 = require("../");
 var expect = chai.expect;
 describe('interation', function () {
     it('build', function (done) {

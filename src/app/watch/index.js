@@ -1,9 +1,9 @@
 "use strict";
-var path = require('path');
-var chokidar = require('chokidar');
-var models = require('../../models');
-var lib = require('../../lib');
-var application = require('../');
+var path = require("path");
+var chokidar = require("chokidar");
+var models = require("../../models");
+var lib = require("../../lib");
+var application = require("../");
 function watch(config, sourceDirMap) {
     var watcher = chokidar.watch(config._appPath, {
         ignored: /\.git|node_modules|bower_components|\.sass\-cache|[\/\\]\./

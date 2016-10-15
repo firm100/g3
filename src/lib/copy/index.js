@@ -1,7 +1,7 @@
 "use strict";
-var path = require('path');
-var fse = require('fs-extra');
-var lib = require('../');
+var path = require("path");
+var fse = require("fs-extra");
+var lib = require("../");
 function copySync(src, dest) {
     fse.copySync(src, dest);
 }

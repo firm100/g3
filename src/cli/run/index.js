@@ -1,9 +1,9 @@
 "use strict";
-var path = require('path');
-var models = require('../../models');
-var lib = require('../../lib');
-var app = require('../../app');
-var serve_1 = require('../serve');
+var path = require("path");
+var models = require("../../models");
+var lib = require("../../lib");
+var app = require("../../app");
+var serve_1 = require("../serve");
 function run(appPath) {
     var g3Config = app.getG3Config(appPath, models.Const.COMMAND_RUN);
     if (!g3Config)

@@ -1,9 +1,9 @@
 "use strict";
-var path = require('path');
-var _ = require('lodash');
-var cp = require('child_process');
-var lib = require('../../../lib');
-var app = require('../../../app');
+var path = require("path");
+var _ = require("lodash");
+var cp = require("child_process");
+var lib = require("../../../lib");
+var app = require("../../../app");
 function buildClient(g3Config) {
     lib.copyAllToClientPath(g3Config);
     if (!lib.pathExists(g3Config._sourcePath))
@@ -22,6 +22,8 @@ function buildClient(g3Config) {
         stdio: ['ignore', 'ignore', 'pipe']
     });
     var html = lib.readFileSync(path.resolve(g3Config._clientPath, g3Config.build.path, "./index.html"));
+    html = html.replace(/href="~\//g, 'href="' + g3Config.build.publicPath);
+    html = html.replace(/src="~\//g, 'src="' + g3Config.build.publicPath);
     _.mapKeys(sourceDirMap, function (sourceDir, key) {
         var routeHTML = html;
         var routePath = app.getRoutePath(sourceDir);

@@ -1,7 +1,7 @@
 "use strict";
-var _ = require('lodash');
-var base64 = require('js-base64');
-var models = require('../models');
+var _ = require("lodash");
+var base64 = require("js-base64");
+var models = require("../models");
 var fetch = require('node-fetch');
 function base64Encode(text) {
     return base64.Base64.encode(text);

@@ -1,8 +1,8 @@
 "use strict";
-var path = require('path');
-var _ = require('lodash');
-var cp = require('child_process');
-var lib = require('../../lib');
+var path = require("path");
+var _ = require("lodash");
+var cp = require("child_process");
+var lib = require("../../lib");
 function prepare(g3Config) {
     var gitignorePath = path.join(g3Config._appPath, '.gitignore');
     if (!lib.isFile(gitignorePath)) {

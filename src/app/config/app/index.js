@@ -1,7 +1,7 @@
 "use strict";
-var path = require('path');
-var models = require('../../../models');
-var lib = require('../../../lib');
+var path = require("path");
+var models = require("../../../models");
+var lib = require("../../../lib");
 function getAppJS(g3Config) {
     var rel = '';
     if (g3Config.redux.store) {

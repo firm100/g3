@@ -1,8 +1,8 @@
 "use strict";
 var path = require('path');
-var models = require('../../models');
-var lib = require('../../lib');
-var app = require('../../app');
+var models = require("../../models");
+var lib = require("../../lib");
+var app = require("../../app");
 function parse(appPath) {
     var g3Config = app.getG3Config(appPath, models.Const.COMMAND_PARSE);
     if (!g3Config)

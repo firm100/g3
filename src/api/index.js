@@ -1,5 +1,5 @@
 "use strict";
-var api_1 = require('./api');
+var api_1 = require("./api");
 function getClient(accessToken) {
     var options = {
         token: accessToken

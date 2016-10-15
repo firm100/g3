@@ -1,6 +1,6 @@
 "use strict";
-var path = require('path');
-var models = require('../../../models');
+var path = require("path");
+var models = require("../../../models");
 function getParseServerDockerfile(g3Config) {
     return "FROM node:latest\n\nRUN mkdir parse\n\nADD . /parse\nWORKDIR /parse\nRUN npm install\n\n## ENV\n# Optional (default : '" + g3Config.parse.appId + "')\n#ENV APP_ID\n# Optional (default : '" + g3Config.parse.masterKey + "')\n#ENV MASTER_KEY\n# Optional (default : '" + g3Config.parse.databaseURI + "')\n#ENV DATABASE_URI\n# Optional (default : " + g3Config.parse.port + ")\n#ENV PORT\n# Optional (default : '/parse')\n#ENV PARSE_MOUNT\n# Optional (default : 'http://localhost:" + g3Config.parse.port + "/parse')\n#ENV SERVER_URL\n# Optional (default : '" + g3Config.cloudCode + "')\n#ENV CLOUD_CODE\n# Optional (default : " + g3Config.parse.dashboard + ")\n#ENV DASHBOARD\n# Optional (default : '" + g3Config.parse.dashboardUser + "')\n#ENV DASHBOARD_USER\n# Optional (default : '" + g3Config.parse.dashboardPass + "')\n#ENV DASHBOARD_PASS\n\nEXPOSE " + g3Config.parse.port + "\n\nCMD [ \"node\", \"./server.js\" ]";
 }

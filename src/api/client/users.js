@@ -1,5 +1,5 @@
 "use strict";
-var users_tokens_1 = require('./users_tokens');
+var users_tokens_1 = require("./users_tokens");
 var Users = (function () {
     function Users(request) {
         this.request = request;

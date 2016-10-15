@@ -1,10 +1,10 @@
 "use strict";
-var path = require('path');
-var fse = require('fs-extra');
-var _ = require('lodash');
-var yaml = require('js-yaml');
-var models = require('../../models');
-var lib = require('../');
+var path = require("path");
+var fse = require("fs-extra");
+var _ = require("lodash");
+var yaml = require("js-yaml");
+var models = require("../../models");
+var lib = require("../");
 function readYML(ymlPath) {
     var obj = null;
     try {

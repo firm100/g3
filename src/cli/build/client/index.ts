@@ -110,7 +110,9 @@ module.exports = {
     stdio: ['ignore', 'ignore', 'pipe']
   })
 
-  const html = lib.readFileSync(path.resolve(g3Config._clientPath, g3Config.build.path, "./index.html"))
+  let html = lib.readFileSync(path.resolve(g3Config._clientPath, g3Config.build.path, "./index.html"))
+  html = html.replace(/href="~\//g, 'href="' + g3Config.build.publicPath)
+  html = html.replace(/src="~\//g, 'src="' + g3Config.build.publicPath)
 
   _.mapKeys(sourceDirMap, function(sourceDir: models.SourceDir, key: string) {
     let routeHTML = html

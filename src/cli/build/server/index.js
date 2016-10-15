@@ -1,7 +1,7 @@
 "use strict";
-var path = require('path');
-var lib = require('../../../lib');
-var app = require('../../../app');
+var path = require("path");
+var lib = require("../../../lib");
+var app = require("../../../app");
 function buildServer(g3Config) {
     lib.copyAllToServerPath(g3Config);
     lib.writeSync(path.join(g3Config._serverPath, 'server.js'), app.getParseServerJs(g3Config));

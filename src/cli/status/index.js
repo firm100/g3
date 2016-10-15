@@ -1,8 +1,8 @@
 "use strict";
-var models = require('../../models');
-var app = require('../../app');
-var home = require('../../home');
-var api = require('../../api');
+var models = require("../../models");
+var app = require("../../app");
+var home = require("../../home");
+var api = require("../../api");
 function status(appPath) {
     var g3Config = app.getG3Config(appPath, models.Const.COMMAND_STATUS);
     if (!g3Config)

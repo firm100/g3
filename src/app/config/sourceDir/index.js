@@ -1,8 +1,8 @@
 "use strict";
-var path = require('path');
-var models = require('../../../models');
-var lib = require('../../../lib');
-var routes_1 = require('../routes');
+var path = require("path");
+var models = require("../../../models");
+var lib = require("../../../lib");
+var routes_1 = require("../routes");
 function getSourceDir(g3Config, dirpath, sourceDirMap) {
     var key = lib.pathRelative(g3Config._sourcePath, dirpath);
     return sourceDirMap[key];

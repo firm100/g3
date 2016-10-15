@@ -1,7 +1,7 @@
 "use strict";
-var path = require('path');
-var models = require('../../../models');
-var lib = require('../../../lib');
+var path = require("path");
+var models = require("../../../models");
+var lib = require("../../../lib");
 function readG3Config(appPath) {
     var g3ConfigPath = path.join(appPath, models.Const.FILE_G3_YML);
     var g3Config = lib.readYML(g3ConfigPath);

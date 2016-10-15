@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 "use strict";
-var program = require('commander');
-var cli = require('./cli');
-var home = require('./home');
+var program = require("commander");
+var cli = require("./cli");
+var home = require("./home");
 var packageJson = require('./resources/package.json');
 program
     .version('G3 Version: ' + packageJson.version)

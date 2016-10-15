@@ -1,7 +1,7 @@
 "use strict";
-var path = require('path');
-var models = require('../../../models');
-var lib = require('../../../lib');
+var path = require("path");
+var models = require("../../../models");
+var lib = require("../../../lib");
 function getStoreJS(g3Config) {
     var reducersPath = path.resolve(g3Config._sourcePath, models.Const.DIR_LIB_REDUCERS);
     var rel = lib.forwardSlash(path.relative(g3Config._g3Path, reducersPath));

@@ -1,8 +1,8 @@
 "use strict";
-var path = require('path');
-var _ = require('lodash');
-var fse = require('fs-extra');
-var slash = require('slash');
+var path = require("path");
+var _ = require("lodash");
+var fse = require("fs-extra");
+var slash = require("slash");
 function osPath(p) {
     p = slash(p || '');
     if (process && process.platform === 'win32') {

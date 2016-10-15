@@ -1,5 +1,5 @@
 "use strict";
-var fse = require('fs-extra');
+var fse = require("fs-extra");
 function removeSync(dir) {
     try {
         fse.removeSync(dir);

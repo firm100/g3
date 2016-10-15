@@ -1,5 +1,5 @@
 "use strict";
-var const_1 = require('./const');
+var const_1 = require("./const");
 var HomeAuthConfig = (function () {
     function HomeAuthConfig() {
     }

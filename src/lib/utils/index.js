@@ -1,7 +1,7 @@
 "use strict";
-var _ = require('lodash');
-var path = require('path');
-var fse = require('fs-extra');
+var _ = require("lodash");
+var path = require("path");
+var fse = require("fs-extra");
 function urlJoin() {
     var paths = [];
     for (var _i = 0; _i < arguments.length; _i++) {

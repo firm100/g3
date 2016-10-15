@@ -1,8 +1,8 @@
 "use strict";
-var path = require('path');
-var _ = require('lodash');
-var models = require('../../../models');
-var lib = require('../../../lib');
+var path = require("path");
+var _ = require("lodash");
+var models = require("../../../models");
+var lib = require("../../../lib");
 function getLayouts(g3Config, sourceDir, dirPath, layouts) {
     if (sourceDir && sourceDir.routes.layout) {
         var layoutPath = path.join(sourceDir.path, sourceDir.routes.layout);

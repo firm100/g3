@@ -1,5 +1,5 @@
 "use strict";
-var fse = require('fs-extra');
+var fse = require("fs-extra");
 function readFileSync(filepath) {
     return fse.readFileSync(filepath, 'utf-8');
 }

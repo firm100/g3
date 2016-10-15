@@ -1,8 +1,8 @@
 "use strict";
-var path = require('path');
-var models = require('../../models');
-var lib = require('../../lib');
-var application = require('../');
+var path = require("path");
+var models = require("../../models");
+var lib = require("../../lib");
+var application = require("../");
 function parseSourceFiles(g3Config) {
     var sourceDirMap = {};
     if (!lib.isDirectory(g3Config._sourcePath))

@@ -1,8 +1,8 @@
 "use strict";
-var path = require('path');
-var _ = require('lodash');
-var fse = require('fs-extra');
-var lib = require('../');
+var path = require("path");
+var _ = require("lodash");
+var fse = require("fs-extra");
+var lib = require("../");
 function writeSync(p, chunk) {
     fse.outputFileSync(p, chunk);
 }

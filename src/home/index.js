@@ -1,9 +1,9 @@
 "use strict";
-var path = require('path');
-var _ = require('lodash');
-var base64 = require('js-base64');
-var models = require('../models');
-var lib = require('../lib');
+var path = require("path");
+var _ = require("lodash");
+var base64 = require("js-base64");
+var models = require("../models");
+var lib = require("../lib");
 function homePath() {
     return process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
 }

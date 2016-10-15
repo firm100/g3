@@ -1,6 +1,6 @@
 "use strict";
-var apps_files_1 = require('./apps_files');
-var apps_folders_1 = require('./apps_folders');
+var apps_files_1 = require("./apps_files");
+var apps_folders_1 = require("./apps_folders");
 var Apps = (function () {
     function Apps(request) {
         this.request = request;
