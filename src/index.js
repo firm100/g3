@@ -19,15 +19,6 @@ program
     cli.build(directory);
 });
 program
-    .command('parse [directory]')
-    .alias('p')
-    .description('run setup commands for all directorys')
-    .option("-s, --setup_mode [mode]", "Which setup mode to use")
-    .action(function (directory) {
-    directory = directory || './';
-    cli.parse(directory);
-});
-program
     .command('run [directory]')
     .alias('r')
     .description('run setup commands for all directorys')

@@ -20,9 +20,6 @@ export function getG3Config(appPath: string, command: string): models.G3Config {
   if (!g3Config.source) {
     g3Config.source = './src'
   }
-  if (!g3Config.cloudCode) {
-    g3Config.cloudCode = './cloud'
-  }
   if (!g3Config.destination || g3Config.destination === '.' || g3Config.destination === './') {
     g3Config.destination = './build'
   }
@@ -62,8 +59,6 @@ export function getG3Config(appPath: string, command: string): models.G3Config {
     uglifyJs: true,
     path: './',
     publicPath: '/',
-    client: true,
-    server: false
   }
   if (!g3Config.build) {
     g3Config.build = defaultBuild
@@ -72,36 +67,8 @@ export function getG3Config(appPath: string, command: string): models.G3Config {
   if (g3Config.build.uglifyJs === undefined) g3Config.build.uglifyJs = defaultBuild.uglifyJs
   if (g3Config.build.path === undefined) g3Config.build.path = defaultBuild.path
   if (g3Config.build.publicPath === undefined) g3Config.build.publicPath = defaultBuild.publicPath
-  if (g3Config.build.client === undefined) g3Config.build.client = defaultBuild.client
-  if (g3Config.build.server === undefined) g3Config.build.server = defaultBuild.server
 
-  const defaultParse = {
-    port: 1337,
-    appId: g3Config._name,
-    masterKey: '7c2cf58b-828b-4fa9-b665-fe0e36941b94',
-    dashboard: true,
-    dashboardUser: 'admin',
-    dashboardPass: 'admin888',
-    databaseURI: 'mongodb://localhost:27017/dev'
-  }
-  if (!g3Config.parse) {
-    g3Config.parse = defaultParse
-  }
-  if (g3Config.parse.port === undefined) g3Config.parse.port = defaultParse.port
-  if (g3Config.parse.appId === undefined) g3Config.parse.appId = defaultParse.appId
-  if (g3Config.parse.masterKey === undefined) g3Config.parse.masterKey = defaultParse.masterKey
-  if (g3Config.parse.dashboard === undefined) g3Config.parse.dashboard = defaultParse.dashboard
-  if (g3Config.parse.dashboardUser === undefined) g3Config.parse.dashboardUser = defaultParse.dashboardUser
-  if (g3Config.parse.dashboardPass === undefined) g3Config.parse.dashboardPass = defaultParse.dashboardPass
-  if (g3Config.parse.databaseURI === undefined) g3Config.parse.databaseURI = defaultParse.databaseURI
-
-  if (g3Config.build.client && g3Config.build.server) {
-    g3Config._clientPath = path.join(g3Config._appPath, g3Config.destination, "client")
-    g3Config._serverPath = path.join(g3Config._appPath, g3Config.destination, "server")
-  } else {
-    g3Config._clientPath = path.join(g3Config._appPath, g3Config.destination)
-    g3Config._serverPath = path.join(g3Config._appPath, g3Config.destination)
-  }
+  g3Config._path = path.join(g3Config._appPath, g3Config.destination)
 
   return g3Config
 }

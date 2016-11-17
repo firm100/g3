@@ -4,7 +4,6 @@ function __export(m) {
 }
 __export(require("./app/"));
 __export(require("./g3Config/"));
-__export(require("./parseServer/"));
 __export(require("./routes/"));
 __export(require("./sourceDir/"));
 __export(require("./store/"));

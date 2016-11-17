@@ -4,14 +4,12 @@ export class G3Config {
   _g3Path: string
   _sourcePath: string
   _destinationPath: string
-  _clientPath: string
-  _serverPath: string
+  _path: string
 
   _command: string
   _timeStamp: number
 
   source: string
-  cloudCode: string
   destination: string
 
   router: {
@@ -32,18 +30,6 @@ export class G3Config {
     uglifyJs: boolean
     path: string
     publicPath: string
-    client: boolean
-    server: boolean
-  }
-
-  parse: {
-    port: number
-    appId: string
-    masterKey: string
-    dashboard: boolean
-    dashboardUser: string
-    dashboardPass: string
-    databaseURI: string
   }
 }
 

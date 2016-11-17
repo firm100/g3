@@ -8,8 +8,8 @@ import { build } from '../build'
 export function serve(appPath) {
   const g3Config: models.G3Config = app.getG3Config(appPath, models.Const.COMMAND_SERVE)
   if (!g3Config) return console.error('fatal: Not found G3 config file: g3.yml')
-  
-  if (!lib.isDirectory(g3Config._clientPath)) {
+
+  if (!lib.isDirectory(g3Config._path)) {
     build(appPath)
   }
 
@@ -19,7 +19,7 @@ export function serve(appPath) {
 var express = require('express');
 
 var app = express();
-app.use(express.static('${lib.osPath(g3Config._clientPath)}'));
+app.use(express.static('${lib.osPath(g3Config._path)}'));
 
 app.listen(${port}, function() {
   console.log('G3 Production server running at localhost:' + ${port});

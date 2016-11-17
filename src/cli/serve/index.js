@@ -8,11 +8,11 @@ function serve(appPath) {
     var g3Config = app.getG3Config(appPath, models.Const.COMMAND_SERVE);
     if (!g3Config)
         return console.error('fatal: Not found G3 config file: g3.yml');
-    if (!lib.isDirectory(g3Config._clientPath)) {
+    if (!lib.isDirectory(g3Config._path)) {
         build_1.build(appPath);
     }
     var port = g3Config.run.port || '9393';
-    var serverJs = "/* node ./.g3/cli/serve/server.js */\nvar express = require('express');\n\nvar app = express();\napp.use(express.static('" + lib.osPath(g3Config._clientPath) + "'));\n\napp.listen(" + port + ", function() {\n  console.log('G3 Production server running at localhost:' + " + port + ");\n})";
+    var serverJs = "/* node ./.g3/cli/serve/server.js */\nvar express = require('express');\n\nvar app = express();\napp.use(express.static('" + lib.osPath(g3Config._path) + "'));\n\napp.listen(" + port + ", function() {\n  console.log('G3 Production server running at localhost:' + " + port + ");\n})";
     lib.writeSync(path.join(g3Config._g3Path, 'cli', 'serve', 'server.js'), serverJs);
     var spawn = require('child_process').spawn;
     var child = spawn('node', [

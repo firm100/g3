@@ -16,7 +16,7 @@ export function write(p: string, chunk: any) {
 export function writeHTML(g3Config: models.G3Config, routePath: string, html: string) {
   if (routePath.indexOf('*') !== -1 || routePath.indexOf(':') !== -1) return
   const rootFilepath = path.join(g3Config._appPath, routePath, "index.html")
-  const filepath = path.join(g3Config._clientPath, routePath, "index.html")
+  const filepath = path.join(g3Config._path, routePath, "index.html")
   const publicPath = _.trimEnd(g3Config.build.publicPath, '/')
   writeSync(filepath, html)
 }

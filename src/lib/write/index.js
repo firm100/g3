@@ -15,7 +15,7 @@ function writeHTML(g3Config, routePath, html) {
     if (routePath.indexOf('*') !== -1 || routePath.indexOf(':') !== -1)
         return;
     var rootFilepath = path.join(g3Config._appPath, routePath, "index.html");
-    var filepath = path.join(g3Config._clientPath, routePath, "index.html");
+    var filepath = path.join(g3Config._path, routePath, "index.html");
     var publicPath = _.trimEnd(g3Config.build.publicPath, '/');
     writeSync(filepath, html);
 }
